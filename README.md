@@ -8,6 +8,11 @@ This tool supplies the missing piece: it converts your mesh into a `.rsdocx` bod
 
 It's a single Windows program. Download it, double-click, done.
 
+The tool now works **both directions**, on two tabs:
+
+- **Convert (in → DSM)** — turn STL/3MF/OBJ/DAE/STEP into `.rsdocx` you can open and solidify in free DSM.
+- **Export (DSM → out)** — turn a mesh back into a **STEP solid** or **DXF** to send to a machine shop or other CAD — the formats free DSM can't export.
+
 ---
 
 ## The free workflow
@@ -78,6 +83,34 @@ When you right-click the mesh in DSM:
 
 ### Alternative: rebuild curves (no Convert to Solid needed)
 The tool can also export editable **rebuild curves** (`.txt`) from a mesh — Fill / Revolve / Blend them natively into a clean parametric solid. Handy for flat, round, and prismatic parts. **DXF, SVG, and STEP always export as curves**; STEP curves are exact CAD geometry.
+
+---
+
+## Export: send a part out of DSM (STEP / DXF)
+
+Free DSM Explorer **can't export STEP, IGES, DWG or DXF** — those are paid-Creator only. The **Export** tab fills that gap so you can design in free DSM and send a usable file to a machine shop or another CAD package.
+
+| Export as | You get | Best for |
+| --- | --- | --- |
+| **STEP solid** (`.step`) | a faceted solid body | machine shops, SolidWorks/Fusion/FreeCAD — opens as a real solid |
+| **3D mesh DXF** (`.dxf`) | loose 3D triangles | AutoCAD; just need the shape |
+| **2D outline DXF** (`.dxf`) | silhouette + holes (pick a plane) | laser / CNC / waterjet flat profiles |
+
+### The machine-shop workflow
+
+A part you **design in DSM** is a native Parasolid solid, which this tool can't read directly. DSM does the first step for free:
+
+1. In DSM: **File → Save As → STL** (free in Explorer). Choose the **finest tessellation** you can — this controls how round your curves stay.
+2. In this tool's **Export** tab: drop that STL in, pick **STEP solid**, Export.
+3. Send the `.step` to your shop. It opens in any CAD as a solid.
+
+(If you have a mesh `.rsdocx` this tool made, you can drop that straight into the Export tab — no STL step needed.)
+
+### Honest limits
+
+- **It's faceted.** The STEP is built from triangles, so a round bore arrives as a many-sided polygon, not a true circle. Fine for flat/prismatic parts; for tight round tolerances, export your STL at maximum tessellation — or use paid Creator's true STEP export / send the original CAD.
+- **STEP is verbose** (~1 KB per triangle). Reduce very dense meshes first, or the file gets large.
+- **Mesh source only.** Native DSM (Parasolid) solids must go out via DSM's free STL export first (step 1 above); the tool reads meshes, not Parasolid.
 
 ---
 
