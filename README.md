@@ -123,14 +123,16 @@ A part you **design in DSM** is a native Parasolid solid, which this tool can't 
 
 ---
 
-## Interoperability statement
+## Scope and interoperability
 
-This is an independent, clean-room tool. It contains no DesignSpark, SpaceClaim, Ansys or Siemens code, and it does not decompile, disassemble, or access the source code of any of their software. It works solely by reading and writing **file formats** — the `.rsdocx` package (a standard OPC/ZIP container) and the point-curve `.txt` format — so that independently created software can exchange data with DesignSpark Mechanical.
+This is an independent, clean-room tool. It contains **no** DesignSpark, SpaceClaim, ANSYS, or Siemens code, and it does **not** decompile, disassemble, or reverse-engineer any of their *software*, nor attempt to discover its source code.
 
-Its purpose is **interoperability with other independently created software** — the exact activity the DesignSpark Mechanical licence expressly permits "to the extent permitted under applicable law." File-format interoperability of this kind is also protected in many jurisdictions (e.g. UK CDPA s.50B/s.296A, EU Software Directive Art. 6, Australia Copyright Act s.47D).
+It works only on **files you create** — reading and writing the `.rsdocx` package (a standard OPC/ZIP container) and the point-curve `.txt` format, so that independent software can exchange data with DesignSpark Mechanical. Your design files are your own data (the DSM/ANSYS licence calls user-created inputs and outputs "Licensee Data"), distinct from the program itself; this tool parses those data files, not the application.
 
-The tool does not reproduce, replace, or circumvent any paid feature of DesignSpark Mechanical: DSM's own modelling, Convert-to-Solid, and export functions do the CAD work — this tool only translates file formats into and out of the ones DSM already reads and writes. Native solid (Parasolid) geometry is **not** reverse-engineered or reproduced; the tool cannot and does not write Parasolid data.
+The tool does not reproduce, replace, or circumvent any paid feature of DSM. DSM's own modelling, Convert-to-Solid, and export functions do the CAD work — this tool only translates between file formats DSM already reads and writes. Native solid (Parasolid) geometry is **not** reverse-engineered or reproduced; the tool cannot and does not write Parasolid data.
 
-If you are a rights-holder with a concern, please open an issue — I'm happy to discuss.
+**Please check your own licence.** The DesignSpark Mechanical / ANSYS end-user licence agreement (available inside the software and in your install folder) governs your use of DSM, is governed by its own choice of law, and restricts reverse-engineering the *software*. Whether format-level interoperability like this is permitted for you depends on that agreement and your local law — so read your EULA, and if in doubt, seek your own legal advice before relying on this tool commercially. Use at your own risk.
 
-*This statement describes intent and design; it is not legal advice.*
+If you are a rights-holder with a concern, please open an issue — I'm happy to discuss or take the project down.
+
+*This statement describes the project's intent and design. It is not legal advice, and it is not a representation that any particular use complies with your licence.*
